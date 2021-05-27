@@ -41,26 +41,26 @@ my_queryset = Queryset(
         theme = "testing",
         operations = [
                 [
-                    Database(path="country.name",args=["values"])
+                    Database(name="country.name",arguments=["values"])
                 ],
 
                 [
-                    Database(path="priogrid_month.ged_best_ns",args=["values"]),
+                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
-                    Transformed(path="lags.tlag",args=["1"]),
-                    Database(path="priogrid_month.ged_best_ns",args=["values"]),
+                    Transformed(name="lags.tlag",arguments=["1"]),
+                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
-                    Transformed(path="lags.tlag",args=["2"]),
-                    Database(path="priogrid_month.ged_best_ns",args=["values"]),
+                    Transformed(name="lags.tlag",arguments=["2"]),
+                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
-                    Transformed(path="lags.tlag",args=["3"]),
-                    Database(path="priogrid_month.ged_best_ns",args=["values"]),
+                    Transformed(name="lags.tlag",arguments=["3"]),
+                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
             ]
     )
