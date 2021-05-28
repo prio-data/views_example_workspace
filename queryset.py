@@ -38,7 +38,7 @@ and 3 steps.
 my_queryset = Queryset(
         name = "my_queryset",
         loa = "priogrid_month",
-        theme = "testing",
+        themes = ["testing"],
         operations = [
                 [
                     Database(name="country.name",arguments=["values"])
