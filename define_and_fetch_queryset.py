@@ -8,7 +8,7 @@ The queryset is defined in a remote database, and can then be fetched with the
 import logging
 
 from viewser.operations import publish,fetch
-from viewser.models import Queryset,Transformed,Database
+from viewser.models import Queryset,TransformOperation,DatabaseOperation
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -41,26 +41,26 @@ my_queryset = Queryset(
         themes = ["testing"],
         operations = [
                 [
-                    Database(name="country.name",arguments=["values"])
+                    DatabaseOperation(name="country.name",arguments=["values"])
                 ],
 
                 [
-                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
+                    DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
-                    Transformed(name="lags.tlag",arguments=["1"]),
-                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
+                    TransformOperation(name="lags.tlag",arguments=["1"]),
+                    DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
-                    Transformed(name="lags.tlag",arguments=["2"]),
-                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
+                    TransformOperation(name="lags.tlag",arguments=["2"]),
+                    DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
-                    Transformed(name="lags.tlag",arguments=["3"]),
-                    Database(name="priogrid_month.ged_best_ns",arguments=["values"]),
+                    TransformOperation(name="lags.tlag",arguments=["3"]),
+                    DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
             ]
     )
