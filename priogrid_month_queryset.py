@@ -8,7 +8,7 @@ The queryset is defined in a remote database, and can then be fetched with the
 import logging
 
 from viewser.operations import publish,fetch
-from viewser.models import Queryset,TransformOperation,DatabaseOperation
+from viewser.models import Queryset,TransformOperation,DatabaseOperation,RenameOperation
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -36,30 +36,39 @@ and 3 steps.
 """
 
 my_queryset = Queryset(
-        name = "my_queryset",
+        name = "priogrid_month_example_queryset",
         loa = "priogrid_month",
-        themes = ["testing"],
+        themes = ["delete_me","example"],
         operations = [
                 [
+                    RenameOperation(arguments=["country_name"]),
                     DatabaseOperation(name="country.name",arguments=["values"])
                 ],
 
                 [
+                    RenameOperation(arguments=["ged_ns"]),
+                    TransformOperation(name="ops.gte",arguments=["25"]),
                     DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
+                    RenameOperation(arguments=["ged_ns_tlag_1"]),
                     TransformOperation(name="lags.tlag",arguments=["1"]),
+                    TransformOperation(name="ops.gte",arguments=["25"]),
                     DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
+                    RenameOperation(arguments=["ged_ns_tlag_2"]),
                     TransformOperation(name="lags.tlag",arguments=["2"]),
+                    TransformOperation(name="ops.gte",arguments=["25"]),
                     DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
 
                 [
-                    TransformOperation(name="lags.tlag",arguments=["3"]),
+                    RenameOperation(arguments=["ged_ns_tlag_3"]),
+                    TransformOperation(name="lags.tlag",arguments=["1"]),
+                    TransformOperation(name="ops.gte",arguments=["25"]),
                     DatabaseOperation(name="priogrid_month.ged_best_ns",arguments=["values"]),
                 ],
             ]
@@ -68,7 +77,7 @@ my_queryset = Queryset(
 if __name__ == "__main__":
     publish(my_queryset)
     data = fetch(my_queryset.name)
-    
-    # Analysis goes here 
+   
+    # Analysis goes here
 
-    data.to_parquet("out.parquet")
+    data.to_parquet("priogrid_month_example_queryset.parquet")
