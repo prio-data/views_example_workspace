@@ -37,5 +37,5 @@ queryset = Queryset(
 
 if __name__ == "__main__":
     publish(queryset)
-    data = fetch("country_month_example_queryset")
-    data.to_parquet("country_month_example_queryset.parquet")
+    df = fetch("country_month_example_queryset")
+    df.to_parquet("country_month_example_queryset.parquet")
