@@ -1,1 +1,1 @@
-viewser>=2.0.0
+viewser>=3.4.0
